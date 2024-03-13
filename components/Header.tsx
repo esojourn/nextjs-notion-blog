@@ -1,6 +1,7 @@
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '../public/static/images/logo.png'
+import Image from  'next/image'
+// import Logo from '../public/static/images/logo.png'
 import Link from './Link'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
@@ -13,7 +14,12 @@ const Header = () => {
         <Link href="/" aria-label={siteMetadata.headerTitle}>
           <div className="flex items-center justify-between">
             <div className="mr-3">
-              <img src={Logo.src} width={'150px'} />
+              <Image 
+                src='/static/images/logo.png'
+                alt='alzheimer-ai'
+                width={150}
+                height={161}
+              />
             </div>
             {typeof siteMetadata.headerTitle === 'string' ? (
               <div className="hidden h-6 text-2xl font-semibold sm:block">
