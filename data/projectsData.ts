@@ -7,20 +7,24 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: 'A Search Engine',
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
+    title: 'GPT中转站',
+    description: `稳定支持GPT-4-Plus，GPT-4 / vision / turbo，Claude-3-Opus 
+    / Sonnet等模型。支持联网、文档图像识别、语音、DallE3出图。无需月租，按量付费，
+    目前成本约为官网API的84%。无需魔法，可直连。15元起。`,
+    imgSrc: '/static/images/cover4.png',
+    href: '/blog/ChatGPT中转站',
   },
   {
-    title: 'The Time Machine',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
-    imgSrc: '/static/images/time-machine.jpg',
-    href: '/blog/the-time-machine',
+    title: 'Midjourney中转站',
+    description: `Midjourney包月，无需魔法，可直连。90元/月起`,
+    imgSrc: '/static/images/cover2.png',
+    href: '/blog/Midjourney',
+  },
+  {
+    title: 'GPT免费站',
+    description: `你没看错，我还活着！`,
+    imgSrc: '/static/images/cover6.png',
+    href: '/about',
   },
 ]
 

@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: '阿兹海默博客 ',
-  author: '阿兹',
-  headerTitle: 'alzheimer-ai',
+  title: 'Az-AI.icu🚑',
+  author: '阿兹海默AI博客',
+  headerTitle: 'Az-AI.icu🚑',
   description: '阿兹海默GPT',
   language: 'en-us',
   theme: 'system', // system, dark or light

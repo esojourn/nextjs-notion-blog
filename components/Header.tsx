@@ -16,7 +16,7 @@ const Header = () => {
             <div className="mr-3">
               <Image 
                 src='/static/images/logo.png'
-                alt='alzheimer-ai'
+                alt='Az-AI.icu'
                 width={150}
                 height={161}
               />
