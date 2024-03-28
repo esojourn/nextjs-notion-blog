@@ -1,0 +1,118 @@
+---
+title: '新增Suno-v3支持，生成音乐效果惊艳！'
+date: '2024-03-28'
+lastmod: '2024-03-28'
+tags: ['经验技巧', 'Suno']
+draft: false
+summary: 'AI杀到音乐领域了。suno根据提示词要求，创作不同风格的音乐，2分钟出两首'
+images: ['/static/images/twitter-card.png']
+---
+
+AI杀到音乐领域了。suno根据提示词要求，创作不同风格的音乐，2分钟出两首。
+实测效果很惊艳，我在第一时间做了支持适配。
+
+### 测试流程
+1. 先让GPT生成歌词，起个歌名
+![歌词生成](/static/images/2024/suno01.png) 
+
+2. 然后把风格“powerful dream pop”和歌词发给suno。
+等两分钟后，成品如下：
+
+<video controls src="https://betai55.s3.ap-northeast-1.amazonaws.com/blog/2024/%E6%98%9F%E6%B5%B7%E5%B9%BB%E5%A2%83.mp4"></video>
+
+3. 了解一下歌词的写作要求，发现还可以优化。
+上面我写的歌词太长了。可以精简，每行字数一致会更好一些。
+歌词可以按这个结构写，suno会按要求把我节奏和高潮
+```
+[Intro]
+铺垫进入
+
+[Verse]
+第一小节
+
+[Chorus]
+和声高潮
+
+[Verse2]
+第二小节
+...
+```
+
+
+### 如梦令
+<audio controls src="https://betai55.s3.ap-northeast-1.amazonaws.com/blog/2024/%E5%A6%82%E6%A2%A6%E4%BB%A4Suno.mp3"></audio>
+```
+style:
+chinese traditional folk,slow,Ethereal,angelic voice,zheng
+
+lyrics:
+昨夜雨疏风骤，
+浓睡不消残酒。
+试问卷帘人，
+却道海棠依旧。
+知否，知否？
+应是绿肥红瘦。
+
+
+常记溪亭日暮
+沉醉不知归路
+兴尽晚回舟
+误入藕花深处
+争渡 争渡
+惊起一滩鸥鹭
+```
+
+### What's wrong with my cat?
+<audio controls src="https://betai55.s3.ap-northeast-1.amazonaws.com/blog/2024/Suno-cat.mp3"></audio>
+```
+Style: Female Vocals, Distorted, Electronic
+Lyrics:
+[Intro]
+Guys I don't know what is wrong with my cat
+Why does he look like that?
+What is wrong?
+Please help!
+
+[Verse]
+Woke up this morning to a strange cat stare
+What's wrong with my feline, he's got a funky hair
+Eyes all wide and his tail's fluffed up high
+Oh, I don't know what's wrong, it's got me asking why
+
+[Chorus]
+Paws and claws, oh my goodness, what's the cause?
+My little kitty acting strange, I'm at a loss
+Paws and claws, can't understand the meows
+Someone please help, don't know what's wrong with him now
+
+[Verse 2]
+He's jumping up and down like he's playing in a game
+But his fur's all scruffy and his eyes look so tame
+Does he want some food or is he just feeling mad?
+I hope he's okay, it's got me feeling so sad
+
+[Verse]
+Guys I don't know what is wrong with my cat
+Why does he look like that?
+What is wrong?
+Please help!
+
+[Verse 2]
+He's jumping up and down like he's playing in a game
+But his fur's all scruffy and his eyes look so tame
+Does he want some food or is he just feeling mad?
+I hope he's okay, it's got me feeling so sad
+
+[Instrumental Interlude]
+
+[Chorus]
+Paws and claws, oh my goodness, what's the cause?
+My little kitty acting strange, I'm at a loss
+Paws and claws, can't understand the meows
+```
+
+
+
+
+
+![微信：阿兹海默](/static/images/wxcode.png) 购买开通，请加微信
