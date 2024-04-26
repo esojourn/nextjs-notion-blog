@@ -13,13 +13,16 @@ images: ['/static/images/twitter-card.png']
 
 ## 支持模型
 
-- **claude-3-opus**：超大杯的Claude 3模型。有报告认为分析推理能力超过gpt-4
-- **claude-3-sonnet**：支持联网，直接输入URL网址抓取内容（抓取信息可能消耗较多额度）。
-- **claude-3-haiku**：对标GPT-3.5-turbo，价格是opus的1/30，反应速度飞快。
+一个账号，支持以下所有模型：
 - **gpt-4-plus**：支持文档/图片识别、Dall-E3图片生成、支持联网搜索  
 （用英文搜索效果更好，注意额度消耗）。
 - **gpt-4-turbo**：知识截止23年12月，支持128k token长度，减少“变懒”症状。  
   _高性价比：价格相当于gpt-4的1/3_
+- **claude-3-opus**：超大杯的Claude 3模型。有报告认为分析推理能力超过gpt-4
+- **claude-3-sonnet**：支持联网，直接输入URL网址抓取内容（抓取信息可能消耗较多额度）。
+- **claude-3-haiku**：对标GPT-3.5-turbo，价格是opus的1/30，反应速度飞快。
+- **suno-v3**：根据文字指令，直接生成音乐或者人声演唱的歌曲。
+- **bing-Balance**：联网支持好，可关键字搜索，可读取指定网址。价格是gpt-4-plus的1/3。
 - **gpt-4-vision**：支持“视觉”功能，可分析图片内容
 - **gpt-4**: 业界标杆，没什么好说的
 - **gpt-3.5-turbo**：便宜，输出速度快。价格只有GPT 4的1/20，适用测试。“幻觉”问题比较大，容易“一本正经的胡说八道”
@@ -42,69 +45,102 @@ _注：价格有效期不是包月，有效期内，额度用完为止。具体�
 - 不同模型的单价不同，见下表。
 
 计费完全透明，后台日志中可以查看每一条问答的扣费记录。
-    <table>
-        <thead>
-        <tr>
-            <th>模型</th>
-            <th>1K token</th>
-            <th>官方价格</th>
-            <th>官方折合RMB</th>
-            <th>本站价格</th>
-            <th>折扣比例</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td rowSpan={2}>
-            gpt-4/plus, <br />
-            claude-3-opus/sonnet
-            </td>
-            <td>input</td>
-            <td>$0.0300</td>
-            <td>￥0.2250</td>
-            <td>￥0.1890</td>
-            <td>84%</td>
-        </tr>
-        <tr>
-            <td>output</td>
-            <td>$0.0600</td>
-            <td>￥0.4500</td>
-            <td>￥0.3780</td>
-            <td>84%</td>
-        </tr>
+        <table>
+          <thead>
+            <tr>
+              <th>模型</th>
+              <th>1K token</th>
+              <th>官方价格</th>
+              <th>官方折合RMB</th>
+              <th>本站价格</th>
+              <th>折扣比例</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowSpan={2}>gpt-4 / gpt-4-plus</td>
+              <td>input</td>
+              <td>$0.0300</td>
+              <td>￥0.2250</td>
+              <td>￥0.1890</td>
+              <td>84%</td>
+            </tr>
+            <tr>
+              <td>output</td>
+              <td>$0.0600</td>
+              <td>￥0.4500</td>
+              <td>￥0.3780</td>
+              <td>84%</td>
+            </tr>
 
-        <tr>
-            <td rowSpan={2}>gpt-4-turbo</td>
-            <td>input</td>
-            <td>$0.0100</td>
-            <td>￥0.0750</td>
-            <td>￥0.0630</td>
-            <td>84%</td>
-        </tr>
-        <tr>
-            <td>output</td>
-            <td>$0.0300</td>
-            <td>￥0.2250</td>
-            <td>￥0.1890</td>
-            <td>84%</td>
-        </tr>
-        <tr>
-            <td rowSpan={2}>gpt-3.5-turbo</td>
-            <td>input</td>
-            <td>$0.0005</td>
-            <td>￥0.0038</td>
-            <td>￥0.0032</td>
-            <td>85%</td>
-        </tr>
-        <tr>
-            <td>output</td>
-            <td>$0.0015</td>
-            <td>￥0.0113</td>
-            <td>￥0.0064</td>
-            <td>57%</td>
-        </tr>
-        </tbody>
-    </table>
+            <tr>
+              <td rowSpan={2}>
+                gpt-4-turbo, <br />
+                bing-Balance
+              </td>
+              <td>input</td>
+              <td>$0.0100</td>
+              <td>￥0.0750</td>
+              <td>￥0.0630</td>
+              <td>84%</td>
+            </tr>
+            <tr>
+              <td>output</td>
+              <td>$0.0300</td>
+              <td>￥0.2250</td>
+              <td>￥0.1890</td>
+              <td>84%</td>
+            </tr>
+
+            <tr>
+              <td rowSpan={2}>claude-3-opus</td>
+              <td>input</td>
+              <td>$0.0150</td>
+              <td>￥0.1125</td>
+              <td>￥0.1080</td>
+              <td>96%</td>
+            </tr>
+            <tr>
+              <td>output</td>
+              <td>$0.0750</td>
+              <td>￥0.5625</td>
+              <td>￥0.5400</td>
+              <td>96%</td>
+            </tr>
+
+            <tr>
+              <td rowSpan={2}>claude-3-sonnet</td>
+              <td>input</td>
+              <td>$0.0030</td>
+              <td>￥0.0225</td>
+              <td>￥0.0216</td>
+              <td>96%</td>
+            </tr>
+            <tr>
+              <td>output</td>
+              <td>$0.0150</td>
+              <td>￥0.1125</td>
+              <td>￥0.1080</td>
+              <td>96%</td>
+            </tr>
+
+            <tr>
+              <td rowSpan={2}>gpt-3.5-turbo</td>
+              <td>input</td>
+              <td>$0.0005</td>
+              <td>￥0.0038</td>
+              <td>￥0.0032</td>
+              <td>85%</td>
+            </tr>
+            <tr>
+              <td>output</td>
+              <td>$0.0015</td>
+              <td>￥0.0113</td>
+              <td>￥0.0064</td>
+              <td>57%</td>
+            </tr>
+          </tbody>
+        </table>
 
 
 ## 举例
