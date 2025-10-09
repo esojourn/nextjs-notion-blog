@@ -1,19 +1,18 @@
 ---
-title: 'Claude Code配置操作说明'
-date: '2025-10-03'
-lastmod: '2025-10-03'
-tags: ['中转站', 'Claude', 'Claude Code']
+title: 'MacOS或Linux中，使用中转API配置Claude Code'
+date: '2025-10-09'
+lastmod: '2025-10-09'
+tags: ['中转站', 'Anthropic', 'Claude Code']
 draft: false
-summary: '本文档提供适用于 Windows 11中，配置Anthropic Claude Code程序的操作。使用中转API，免去各种人为设置的障碍，帮助快捷完成配置工作。'
+summary: '本文档提供适用于MacOS或Linux中，配置Anthropic Claude Code程序的操作。'
 images: ['/static/images/twitter-card.png']
 ---
-本文档提供适用于 Windows 11中，配置Anthropic Claude Code程序的操作。
-使用中转API，免去各种人为设置的障碍，帮助快捷完成配置工作。
+本文档提供适用于MacOS或Linux中，配置Anthropic Claude Code程序的操作。
+使用中转API，免去各种人为设置的障碍，帮助快捷完成配置工作。并且计费单价相较于官网，提供相当折扣。
 
 ## 一、准备工作
 1. **终端工具要求**
-    - Windows：使用 **PowerShell**
-![PowerShell](/static/images/251003-01.jpeg)
+    - Linux/macOS：直接使用系统自带的 **命令行终端（Terminal）**
 2. **配置信息确认**
     准备好阿兹提供的API Key（`sk-xxxxxx`长串字符）：
 ```bash
@@ -30,19 +29,14 @@ ANTHROPIC_AUTH_TOKEN="sk-xxxxxx"
 	**方法二：使用包管理器**
 	如果你安装了 Chocolatey 或 Scoop，可以使用命令行安装：
 
-```powershell
+```bash
 # 使用 Chocolatey
 choco install nodejs
 # 或使用 Scoop
 scoop install nodejs
 ```
 
-	**Windows 注意事项**
-	- 建议使用 PowerShell 而不是 CMD
-	- 安装配置时，以管理员身份运行
-	
-	**验证安装是否成功**
-	安装完成后，打开 PowerShell 或 CMD，输入以下命令：
+
 
 ```powershell
 node --version
@@ -52,29 +46,7 @@ npm --version
 
 ## 二、配置环境变量
 
-### 1. Windows 系统（PowerShell）
-Windows 需通过 PowerShell 配置用户级环境变量，确保永久生效。
-
-#### 步骤 1：打开管理员模式 PowerShell
-- 按下 `Win+X` 组合键，在弹出的菜单中选择 **“Windows PowerShell（管理员）”**（若显示 “终端（管理员）”，打开后切换为 PowerShell 标签页）。
-
-#### 步骤 2：执行配置命令
-##### **方法一（永久生效）**
-在 PowerShell 中逐行输入以下命令（替换`sk-xxxxxx`为实际密钥）：
-```powershell
-# 配置Claude（Anthropic）API环境变量
-[Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", "https://api.alz-ai.cn", "User")
-[Environment]::SetEnvironmentVariable("ANTHROPIC_AUTH_TOKEN", "sk-xxxxxx", "User")
-```
-
-##### **方法二（当前窗口生效）**
-在PowerShell中输入：（替换`sk-xxxxxx`为实际密钥）：
-```powershell
-$env:ANTHROPIC_BASE_URL = "https://api.alz-ai.cn"
-$env:ANTHROPIC_AUTH_TOKEN = "sk-xxxxx"
-```
-
-### 2. Linux/macOS 系统（Zsh/Bash 终端）
+### Linux/macOS 系统（Zsh/Bash 命令行终端）
 Linux 默认终端多为 Bash，macOS 默认终端为 Zsh，需根据实际使用的终端类型选择配置文件。
 #### 步骤 1：打开配置文件
 
@@ -108,26 +80,27 @@ export OPENAI_API_KEY="sk-xxxxxx"
 - 执行以下命令使配置立即生效：
 	- Zsh 终端：`source ~/.zshrc`
     - Bash 终端：`source ~/.bashrc`
+- 或者关闭终端，重新打开
 
 
 ## 三、安装 / 运行claude code
 ### 步骤 1：安装 Claude Code
 ```bash
 npm install -g @anthropic-ai/claude-code
+# 这一步，可能需要以管理员身份运行
+sudo npm install -g @anthropic-ai/claude-code
 ```
 
-这一步，可能需要以管理员身份运行powershell
-![PowerShell](/static/images/251003-01.jpeg)
 
 ### 步骤 2：运行Claude Code
-```powershell
+```bash
 # 1. 进入代码目录
-cd d:\temp
+cd /XXXX/Dev_Folder
 
 # 2. 验证Claude配置
-$env:ANTHROPIC_BASE_URL
+echo $ANTHROPIC_BASE_URL
 # 应输出：https://api.alz-ai.cn
-$env:ANTHROPIC_AUTH_TOKEN
+echo $ANTHROPIC_AUTH_TOKEN
 # 应输出：sk-xxxxxx（实际密钥）
 
 claude #启动软件
@@ -135,23 +108,24 @@ claude #启动软件
 
 在claude中，输入命令选择模型
 ```claude
-# 输入命令选择模型
+# 输入命令选择模型 !!!重要!!!
 # 选择模型 claude-sonnet-4-5
 /model sonnet45
 # 或 claude-opus-4-1
 /model op41
-### !!!opus 4.1模型单价昂贵，注意额度消耗!!!
+### !!!opus 4.1模型单价高，注意额度消耗!!!
 
 /status 
 # 查看工作状态
 ```
 
-![MCP](/static/images/251003-02.jpeg)
+![[IMG-20251008211507895.jpg]]
 
-安装一个常用的MCP插件，**在powershell中**，输入：
-```powershell
+安装一个常用的MCP插件，在**命令行窗口**，输入：
+```bash
 claude mcp add playwright npx @playwright/mcp@latest
 ```
+
 
 没有playwright的情况下，cc依赖claude模型的web浏览能力。受到安全限制，不能直接浏览。
 ![MCP](/static/images/251003-03.jpeg)
