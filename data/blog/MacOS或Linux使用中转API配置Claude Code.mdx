@@ -7,6 +7,8 @@ draft: false
 summary: '本文档提供适用于MacOS或Linux中，配置Anthropic Claude Code程序的操作。'
 images: ['/static/images/twitter-card.png']
 ---
+[ 最后更新：26/03/24 ]
+
 本文档提供适用于MacOS或Linux中，配置Anthropic Claude Code程序的操作。
 使用中转API，免去各种人为设置的障碍，帮助快捷完成配置工作。并且计费单价相较于官网，提供相当折扣。
 
@@ -110,16 +112,18 @@ claude #启动软件
 ```claude
 # 输入命令选择模型 !!!重要!!!
 # 选择模型 claude-sonnet-4-5
-/model sonnet45
+/model claude-sonnet-4-6
 # 或 claude-opus-4-1
-/model op41
-### !!!opus 4.1模型单价高，注意额度消耗!!!
+/model claude-opus-4-6
+### !!!opus 模型单价高，注意额度消耗!!!
 
 /status 
 # 查看工作状态
 ```
 
 ![[IMG-20251008211507895.jpg]]
+
+原来使用模型简称sonnet45或opus45。现在API已经调整，模型名称和官方统一，不再需要使用简称形式
 
 安装一个常用的MCP插件，在**命令行窗口**，输入：
 ```bash

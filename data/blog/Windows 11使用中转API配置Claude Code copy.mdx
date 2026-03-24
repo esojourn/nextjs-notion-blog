@@ -1,12 +1,13 @@
 ---
 title: 'Windows 11中，使用中转API配置Claude Code'
 date: '2025-10-03'
-lastmod: '2025-10-03'
+lastmod: '2026-03-24'
 tags: ['中转站', 'Anthropic', 'Claude Code']
 draft: false
 summary: '本文档提供适用于 Windows 11中，配置Anthropic Claude Code程序的操作。使用中转API，免去各种人为设置的障碍，帮助快捷完成配置工作。'
 images: ['/static/images/twitter-card.png']
 ---
+[ 最后更新：26/03/24 ]
 本文档提供适用于 Windows 11中，配置Anthropic Claude Code程序的操作。
 使用中转API，免去各种人为设置的障碍，帮助快捷完成配置工作。
 
@@ -135,18 +136,21 @@ claude #启动软件
 
 在claude中，输入命令选择模型
 ```claude
-# 输入命令选择模型 !!!重要!!!
+# 输入命令选择模型 
 # 选择模型 claude-sonnet-4-5
-/model sonnet45
+/model claude-sonnet-4-6
 # 或 claude-opus-4-1
-/model op41
-### !!!opus 4.1模型单价高，注意额度消耗!!!
+/model claude-opus-4-6
+### !!!opus 模型单价高，注意额度消耗!!!
 
 /status 
 # 查看工作状态
 ```
 
 ![MCP](/static/images/251003-02.jpeg)
+
+原来截图里使用模型简称sonnet45或opus45。现在API已经调整，模型名称和官方统一，不再需要使用简称形式
+
 
 安装一个常用的MCP插件，**在powershell中**，输入：
 ```powershell
