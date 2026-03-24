@@ -2,11 +2,12 @@
 title: '中转站使用说明'
 date: '2024-08-06'
 lastmod: '2025-08-06'
-tags: ['中转站', 'ChatGPT', 'Claude-3']
+tags: ['中转站', 'ChatGPT', 'Claude-3', 'Opus']
 draft: false
 summary: '购买后的操作说明 / 设置技巧提示'
 images: ['/static/images/twitter-card.png']
 ---
+[ 最近更新：26/03/24 ]
 ### 地址：
 海外服务器：https://g1.az-ai.icu/  
 内地备用地址：https://cn1.alz-ai.cn/  
@@ -15,24 +16,25 @@ images: ['/static/images/twitter-card.png']
 ### 操作
 1. 你会收到一个密钥（由“SK-”开始的一长串字符）  
 输入到左下角设置按钮中，API KEY中。
-2. 需要使用GPT 4或Claude 3时，别忘了在模型里选择
+2. 需要使用GPT 5.4或Claude 4.6时，别忘了在模型里选择
 ![选择模型](/static/images/chooseModel.png) 
 3. 设置中可以查到每一笔的消费记录，计费透明
 
 ### 模型选择
 
 一个账号，支持以下所有模型：
-- **gpt-4o / gpt-4.1**：支持视觉/联网。强大的逻辑推理和情感识别。日常工作主力模型。
-- **claude-opus-4-1**：25年8月发布，目前效果最佳的模型，代码生成，论文及外部引用准确
-- **claude-opus-4**：25年3月发布同上，opus 4.1的前一台
-- **claude-sonnet-4**：价格低于opus。中文文字自然，高性价比。
-- **gpt-4o-image**：图像模型。支持生成、修改图片。描述画面内容和风格，模型升成图片。
-- **deepseek-r1**: 国产开源模型，25年初最流行度高。价格便宜，幻觉现象略多，深度思考模式
-- **deepseek-v3**: 国产开源模型，25年初最流行度高。价格便宜，幻觉现象略多
-- **qwen3-235b-a22b**: 25年7月发布，千问3，擅长数学，编码，价格便宜
+- **claude-opus-4-6**：目前效果最佳的模型，适合OpenClaw工具调用，代码生成，论文及外部引用准确
+- **claude-sonnet-4-6**：价格低于opus。中文语言自然，高性价比。
+- **gpt-5.4 / gpt-5.3-codex**：最新一代openai模型，稳定可靠
+- **gemini-3-pro-preview**: Google出品，适合复杂任务
+- **gemini-3-flash-preview**: Google出品，廉价高速
+- **Grok-4**: 马斯克xAI出品，联网搜索效果好，限制少
+- **Nano-banana Pro**：Google出品大香蕉图像模型
+- **deepseek-v3.2**: 国产开源模型，25年初最流行度高。价格便宜，幻觉现象略多
 - **suno-v3**：根据文字指令，直接生成音乐或者人声演唱的歌曲。
-- **o3**：openai模型，擅长科学，工程，数学领域
-- **gpt-4-plus**：老牌模型，推荐用opus系列代替。价格高，性价比不突出
+- **其他国产模型**：Glm-5，minimax-m2.5等
+
+支持OpenClaw，Claude Code, Cherry Studio等第三方应用调用。
 
 ### 设置提示 - 省钱 / 增效
 根据你的使用场景需求，可以考虑调整以下设置。
