@@ -1,6 +1,6 @@
 ---
 title: 'Hermes Agent安装说明-Mac / Linux / WSL系统适用'
-date: '2025-10-03'
+date: '2026-05-27'
 lastmod: '2026-05-27'
 tags: ['HermesAgent', 'NousResearch', 'Agent']
 draft: false
@@ -13,23 +13,7 @@ images: ['/static/images/twitter-card.png']
 
 Windows 用户：建议先启用 WSL2 并安装 Ubuntu 系统，再按 Linux 流程操作。WSL2 启用方法可参考：https://zhuanlan.zhihu.com/p/466001838
 
-## 一、Hermes Agent 是什么
-
-Hermes Agent 是 Nous Research 开源（MIT 协议）的自主智能体，定位为"陪你一起成长的 Agent"。它的主要特性：
-
-- **跨平台接入**：可在 Telegram、Discord、Slack、WhatsApp、Signal、邮件以及命令行中使用，对话状态在不同入口之间延续。
-- **持久记忆与技能**：自动生成并保留技能，长期记住项目知识和过往解法。
-- **自然语言定时任务**：用一句话设置周期性任务，例如生成日报、定时备份。
-- **子 Agent 委派**：可以派生独立子 Agent，每个子 Agent 拥有自己的对话、终端与 Python RPC 脚本。
-- **多种沙箱后端**：支持 local、Docker、SSH、Singularity、Modal 五种执行环境。
-- **丰富工具集**：内置网络搜索、浏览器自动化、视觉、图像生成、TTS 以及多模型推理。
-
-官方信息源：
-
-- 国外（NousResearch 官方站）：https://hermes-agent.nousresearch.com/
-- 国内（中文社区镜像与文档）：https://hermesagent.org.cn/docs/getting-started/installation
-
-## 二、先决条件
+## 一、先决条件
 
 推荐运行环境（安装器会自动检测、缺失会提示）：
 
@@ -39,7 +23,7 @@ Hermes Agent 是 Nous Research 开源（MIT 协议）的自主智能体，定位
 - **ripgrep** 与 **ffmpeg**：非硬性依赖，缺失时会提示
 - **API Key**：准备好阿兹提供的 API Key（`sk-xxxxxx` 长串字符）。微信联系 **alz-ai** 获取。
 
-## 三、如何打开终端
+## 二、如何打开终端
 
 下面所有命令都需要在"终端"里输入。如果你以前没打开过终端，按对应系统的方法操作即可。
 
@@ -76,7 +60,7 @@ Linux 默认 shell 通常是 Bash，对应 `~/.bashrc`。
 
 进入 WSL 后，所有命令都按 Linux 的方式执行。
 
-## 四、快速安装（推荐）
+## 三、快速安装
 
 适用于 macOS、Linux 桌面/服务器，以及 Windows WSL2。在终端中执行下面其中一条命令即可。
 
@@ -144,7 +128,7 @@ hermes setup          # 再次运行完整设置向导
 ```
 
 
-## 五、故障排除
+## 四、故障排除
 
 - **`hermes: command not found`**：重新加载 shell（`source ~/.bashrc` 或 `source ~/.zshrc`），或检查 PATH 是否包含 `~/.local/bin`。
 - **API 密钥未设置**：运行 `hermes model`，或 `hermes config set OPENROUTER_API_KEY your_key`。
@@ -154,7 +138,7 @@ hermes setup          # 再次运行完整设置向导
 
 如需更深的诊断，运行 `hermes doctor`，它会指出缺失项并给出修复方法。
 
-## 六、参考资料
+## 五、参考资料
 
 - 国外官方站：https://hermes-agent.nousresearch.com/
 - 国内中文文档：https://hermesagent.org.cn/docs/getting-started/installation
