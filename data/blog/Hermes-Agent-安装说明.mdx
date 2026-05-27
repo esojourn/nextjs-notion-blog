@@ -64,7 +64,7 @@ Linux 默认 shell 通常是 Bash，对应 `~/.bashrc`。
 
 适用于 macOS、Linux 桌面/服务器，以及 Windows WSL2。在终端中执行下面其中一条命令即可。
 
-### 国内用户（推荐，走中文社区镜像）
+### 国内用户（国际网络环境有困难时选择）
 
 ```bash
 curl -fsSL https://res1.hermesagent.org.cn/install.sh | bash
@@ -72,19 +72,11 @@ curl -fsSL https://res1.hermesagent.org.cn/install.sh | bash
 
 该脚本由中文社区维护，链路在国内可直连，下载源码包、Python、虚拟环境的速度更稳定。
 
-### 海外用户（NousResearch 官方源）
+### 官方源（网络畅通时首选）
 
 ```bash
 curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 ```
-
-> 安全提示：将远程脚本直接管道到 `bash` 会以当前用户权限执行服务器返回的任何内容。如果想先看一眼内容，可以这样做：
->
-> ```bash
-> curl -fsSL https://res1.hermesagent.org.cn/install.sh -o install.sh
-> less install.sh   # 检查内容
-> bash install.sh   # 确认无误后再执行
-> ```
 
 安装器会自动完成：下载源码包、复用或安装 Python、创建虚拟环境、安装 `hermes` 命令、并引导首次配置。默认会跳过浏览器、Chromium 与 WhatsApp 桥接等可选组件。
 
