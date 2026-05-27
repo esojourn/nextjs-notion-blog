@@ -1,0 +1,165 @@
+---
+title: 'Hermes Agent安装说明-Mac / Linux / WSL系统适用'
+date: '2025-10-03'
+lastmod: '2026-05-27'
+tags: ['HermesAgent', 'NousResearch', 'Agent']
+draft: false
+summary: '本文档面向新手，详细说明如何在 macOS / Linux / Windows WSL2 中安装并运行 Hermes Agent，包含国内与国外两种安装源、终端打开方法、API 密钥配置以及验证步骤。'
+images: ['/static/images/twitter-card.png']
+---
+[ 最后更新：26/05/27 ]
+
+本文档面向 macOS / Linux / Windows WSL2 用户，介绍 Hermes Agent 的完整安装流程。如果你是第一次接触命令行，也可以照着步骤一步步操作。
+
+Windows 用户：建议先启用 WSL2 并安装 Ubuntu 系统，再按 Linux 流程操作。WSL2 启用方法可参考：https://zhuanlan.zhihu.com/p/466001838
+
+## 一、Hermes Agent 是什么
+
+Hermes Agent 是 Nous Research 开源（MIT 协议）的自主智能体，定位为"陪你一起成长的 Agent"。它的主要特性：
+
+- **跨平台接入**：可在 Telegram、Discord、Slack、WhatsApp、Signal、邮件以及命令行中使用，对话状态在不同入口之间延续。
+- **持久记忆与技能**：自动生成并保留技能，长期记住项目知识和过往解法。
+- **自然语言定时任务**：用一句话设置周期性任务，例如生成日报、定时备份。
+- **子 Agent 委派**：可以派生独立子 Agent，每个子 Agent 拥有自己的对话、终端与 Python RPC 脚本。
+- **多种沙箱后端**：支持 local、Docker、SSH、Singularity、Modal 五种执行环境。
+- **丰富工具集**：内置网络搜索、浏览器自动化、视觉、图像生成、TTS 以及多模型推理。
+
+官方信息源：
+
+- 国外（NousResearch 官方站）：https://hermes-agent.nousresearch.com/
+- 国内（中文社区镜像与文档）：https://hermesagent.org.cn/docs/getting-started/installation
+
+## 二、先决条件
+
+推荐运行环境（安装器会自动检测、缺失会提示）：
+
+- **Python 3.11+**：安装器优先复用系统已有 Python
+- **Git**：仅当镜像源码包不可用时回退使用
+- **Node.js v22+**：仅在需要浏览器自动化或 WhatsApp 桥接时安装
+- **ripgrep** 与 **ffmpeg**：非硬性依赖，缺失时会提示
+- **API Key**：准备好阿兹提供的 API Key（`sk-xxxxxx` 长串字符）。微信联系 **alz-ai** 获取。
+
+## 三、如何打开终端
+
+下面所有命令都需要在"终端"里输入。如果你以前没打开过终端，按对应系统的方法操作即可。
+
+### 1. macOS 打开终端
+
+任选一种方式：
+
+- **方法一：聚焦搜索（最快）**
+  按下键盘 `Command + 空格` 调出聚焦搜索，输入 `terminal` 或 `终端`，回车即可打开。
+- **方法二：从启动台**
+  点击 Dock 上的"启动台"（火箭图标），在搜索栏输入 `终端`，点击图标打开。
+- **方法三：从访达**
+  打开"访达（Finder）"，进入"应用程序 → 实用工具 → 终端"。
+
+macOS 默认终端使用 Zsh，本文里凡是涉及 `~/.zshrc` 的操作都对应它。
+
+### 2. Linux 打开终端
+
+不同桌面发行版略有差异，常见方式：
+
+- **快捷键**：大多数发行版（Ubuntu / Debian / Fedora 等）按 `Ctrl + Alt + T` 直接打开终端。
+- **应用菜单**：点击左下角"活动 / 应用"，搜索 `terminal` 或 `终端`。
+- **服务器（无桌面）**：通过 SSH 连接后，登录的就是终端。
+
+Linux 默认 shell 通常是 Bash，对应 `~/.bashrc`。
+
+### 3. Windows WSL2 打开终端
+
+前提：已启用 WSL2 并安装 Ubuntu。
+
+- **方法一**：按 `Win` 键，搜索 `Ubuntu`，点击打开即可进入 WSL 终端。
+- **方法二**：打开 Windows Terminal（任务栏搜索 `Terminal`），点击顶部下拉箭头，选择 `Ubuntu`。
+- **方法三**：在 PowerShell 里直接输入 `wsl` 回车，进入 WSL 环境。
+
+进入 WSL 后，所有命令都按 Linux 的方式执行。
+
+## 四、快速安装（推荐）
+
+适用于 macOS、Linux 桌面/服务器，以及 Windows WSL2。在终端中执行下面其中一条命令即可。
+
+### 国内用户（推荐，走中文社区镜像）
+
+```bash
+curl -fsSL https://res1.hermesagent.org.cn/install.sh | bash
+```
+
+该脚本由中文社区维护，链路在国内可直连，下载源码包、Python、虚拟环境的速度更稳定。
+
+### 海外用户（NousResearch 官方源）
+
+```bash
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+```
+
+> 安全提示：将远程脚本直接管道到 `bash` 会以当前用户权限执行服务器返回的任何内容。如果想先看一眼内容，可以这样做：
+>
+> ```bash
+> curl -fsSL https://res1.hermesagent.org.cn/install.sh -o install.sh
+> less install.sh   # 检查内容
+> bash install.sh   # 确认无误后再执行
+> ```
+
+安装器会自动完成：下载源码包、复用或安装 Python、创建虚拟环境、安装 `hermes` 命令、并引导首次配置。默认会跳过浏览器、Chromium 与 WhatsApp 桥接等可选组件。
+
+### 安装完成后
+
+让 `hermes` 命令在当前终端立即生效：
+
+```bash
+# Bash（Linux / WSL 默认）
+source ~/.bashrc
+
+# Zsh（macOS 默认）
+source ~/.zshrc
+
+# 然后启动
+hermes
+```
+
+### 配置自定义 LLM 提供商（使用阿兹 API）
+
+首次启动 `hermes` 后，会进入设置向导。选择模型时，按以下步骤配置自定义提供商：
+
+1. 运行 `hermes model`，选择 ** Custom endpoint (enter URL manually)**（自定义提供商）。
+2. 在 **Base URL** 处输入：
+   ```
+   https://api.alz-ai.cn/v1
+   ```
+3. 在 **API Key** 处输入你从阿兹获取的密钥（`sk-xxxxxx` 格式）。
+4. 在 **Model name** 处输入模型名称：`claude-opus-4-6` 或 `claude-sonnet-4-6`。
+
+配置完成后，Hermes Agent 即可通过阿兹中转 API 调用 Claude 模型。
+
+后续如需重新配置：
+
+```bash
+hermes model          # 选择 LLM 提供商和具体模型
+hermes tools          # 配置启用哪些工具
+hermes gateway setup  # 设置消息平台（Telegram/Discord 等）
+hermes config set     # 单独设置某个配置项
+hermes setup          # 再次运行完整设置向导
+```
+
+
+## 五、故障排除
+
+- **`hermes: command not found`**：重新加载 shell（`source ~/.bashrc` 或 `source ~/.zshrc`），或检查 PATH 是否包含 `~/.local/bin`。
+- **API 密钥未设置**：运行 `hermes model`，或 `hermes config set OPENROUTER_API_KEY your_key`。
+- **更新后配置丢失**：先运行 `hermes config check`，再执行 `hermes config migrate`。
+- **国内拉取慢或超时**：改用国内镜像 `https://res1.hermesagent.org.cn/install.sh`；手动安装时也可以用国内 PyPI 镜像加速 `uv pip install`。
+- **WSL 中无法访问 localhost**：检查 Windows 端是否被防火墙拦截，必要时在 WSL 中使用 `ip addr` 查看实际 IP。
+
+如需更深的诊断，运行 `hermes doctor`，它会指出缺失项并给出修复方法。
+
+## 六、参考资料
+
+- 国外官方站：https://hermes-agent.nousresearch.com/
+- 国内中文文档：https://hermesagent.org.cn/docs/getting-started/installation
+- 源码仓库：https://github.com/NousResearch/hermes-agent
+
+
+售后支持请微信联系：alz-ai
+![扫码加微信](/static/images/wxcode.png)  
