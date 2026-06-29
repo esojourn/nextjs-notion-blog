@@ -1,0 +1,717 @@
+/* ===========================================================================
+   操作说明（Claude Code 使用教程）页面样式
+   - 原始页面的全部视觉样式已弃用，这里按本博客的设计（pink 主色 + 明暗模式）重写
+   - 仅保留原页面基于 radio + :has()/:checked 的「选项切换」机制（功能性，非外观）
+   - 全部选择器作用域限定在 .alz-manual 之下，避免污染站点其他页面
+   =========================================================================== */
+
+/* 原页面内联样式里引用了一批 CSS 变量（--b/--border/--t…），
+   这里用博客主题色重新定义，使残留的内联样式也能在新主题下正确呈现 */
+.alz-manual {
+  --b: #db2777; /* pink-600 主色 */
+  --p: #ec4899; /* pink-500 */
+  --g: #f472b6; /* pink-400 */
+  --o: #f59e0b; /* amber-500 */
+  --r: #ef4444; /* red-500 */
+  --t: #111827; /* 正文 */
+  --t2: #4b5563; /* 次要文字 */
+  --t3: #9ca3af; /* 弱化文字 */
+  --glass: rgba(0, 0, 0, 0.02);
+  --glass2: rgba(0, 0, 0, 0.05);
+  --border: rgba(0, 0, 0, 0.1);
+  --border2: rgba(0, 0, 0, 0.18);
+
+  width: 100%;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--t);
+}
+
+.dark .alz-manual {
+  --t: #f3f4f6;
+  --t2: #9ca3af;
+  --t3: #6b7280;
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass2: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.12);
+  --border2: rgba(255, 255, 255, 0.2);
+}
+
+/* ---- 弃用原页面的装饰 / 重复头部 / 自带主题按钮 ---- */
+.alz-manual .tut-bg,
+.alz-manual .tut-theme,
+.alz-manual .tut-head,
+.alz-manual .tut-divider {
+  display: none !important;
+}
+
+.alz-manual .tut,
+.alz-manual .tut-in {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+}
+
+.alz-manual .tut-radio {
+  display: none;
+}
+
+/* ===========================================================================
+   选项卡（产品 / 操作系统）
+   =========================================================================== */
+.alz-manual .tut-tabs-wrap {
+  position: static;
+  margin-bottom: 24px;
+}
+
+.alz-manual .tut-tabs {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 16px;
+  background: var(--glass);
+}
+
+.alz-manual .tut-tabs-hint {
+  font-size: 12px;
+  color: var(--t3);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.alz-manual .tut-tabs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.alz-manual .tut-prod-tabs .tut-tabs-row {
+  justify-content: center;
+}
+
+.alz-manual .tut-tab {
+  flex: 0 0 auto;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--t2);
+  border: 1px solid transparent;
+}
+
+.dark .alz-manual .tut-tab {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.alz-manual .tut-sys-tabs .tut-tab {
+  flex: 1 1 auto;
+}
+
+.alz-manual .tut-tab:hover {
+  background: rgba(236, 72, 153, 0.12);
+  color: var(--b);
+}
+
+/* 选中态：产品 / 系统标签（保留原 :has/:checked 机制，改为 pink 主色） */
+.alz-manual #r-cc:checked ~ .tut-prod-tabs .tut-tab[for='r-cc'],
+.alz-manual #r-codex:checked ~ .tut-prod-tabs .tut-tab[for='r-codex'],
+.alz-manual #r-gemini:checked ~ .tut-prod-tabs .tut-tab[for='r-gemini'],
+.alz-manual #r-droid:checked ~ .tut-prod-tabs .tut-tab[for='r-droid'],
+.alz-manual #r-vscode:checked ~ .tut-prod-tabs .tut-tab[for='r-vscode'],
+.alz-manual #r-wsl:checked ~ .tut-prod-tabs .tut-tab[for='r-wsl'],
+.alz-manual #r-ccswitch:checked ~ .tut-prod-tabs .tut-tab[for='r-ccswitch'],
+.alz-manual #r-statusline:checked ~ .tut-prod-tabs .tut-tab[for='r-statusline'],
+.alz-manual #r-opencode:checked ~ .tut-prod-tabs .tut-tab[for='r-opencode'],
+.alz-manual #r-ecc:checked ~ .tut-prod-tabs .tut-tab[for='r-ecc'],
+.alz-manual #r-mcp:checked ~ .tut-prod-tabs .tut-tab[for='r-mcp'],
+.alz-manual #r-claudemd:checked ~ .tut-prod-tabs .tut-tab[for='r-claudemd'],
+.alz-manual #r-openclaw:checked ~ .tut-prod-tabs .tut-tab[for='r-openclaw'],
+.alz-manual #r-faq:checked ~ .tut-prod-tabs .tut-tab[for='r-faq'],
+.alz-manual #r-win:checked ~ .tut-sys-tabs .tut-tab[for='r-win'],
+.alz-manual #r-mac:checked ~ .tut-sys-tabs .tut-tab[for='r-mac'],
+.alz-manual #r-linux:checked ~ .tut-sys-tabs .tut-tab[for='r-linux'] {
+  background: linear-gradient(135deg, #db2777, #ec4899);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(219, 39, 119, 0.3);
+}
+
+/* ===========================================================================
+   面板显隐（功能性规则，沿用原页面结构）
+   =========================================================================== */
+.alz-manual .tut-content,
+.alz-manual .tut-prod {
+  display: none;
+}
+
+.alz-manual .tut-in:has(#r-cc:checked) .tut-prod-cc,
+.alz-manual .tut-in:has(#r-codex:checked) .tut-prod-codex,
+.alz-manual .tut-in:has(#r-gemini:checked) .tut-prod-gemini,
+.alz-manual .tut-in:has(#r-droid:checked) .tut-prod-droid,
+.alz-manual .tut-in:has(#r-vscode:checked) .tut-prod-vscode,
+.alz-manual .tut-in:has(#r-wsl:checked) .tut-prod-wsl,
+.alz-manual .tut-in:has(#r-ccswitch:checked) .tut-prod-ccswitch,
+.alz-manual .tut-in:has(#r-statusline:checked) .tut-prod-statusline,
+.alz-manual .tut-in:has(#r-opencode:checked) .tut-prod-opencode,
+.alz-manual .tut-in:has(#r-ecc:checked) .tut-prod-ecc,
+.alz-manual .tut-in:has(#r-mcp:checked) .tut-prod-mcp,
+.alz-manual .tut-in:has(#r-claudemd:checked) .tut-prod-claudemd,
+.alz-manual .tut-in:has(#r-openclaw:checked) .tut-prod-openclaw,
+.alz-manual .tut-in:has(#r-faq:checked) .tut-prod-faq {
+  display: block;
+}
+
+/* 无操作系统区分的产品：隐藏「选择操作系统」选项卡 */
+.alz-manual .tut-in:has(#r-droid:checked) #sys-tabs,
+.alz-manual .tut-in:has(#r-vscode:checked) #sys-tabs,
+.alz-manual .tut-in:has(#r-wsl:checked) #sys-tabs,
+.alz-manual .tut-in:has(#r-ccswitch:checked) #sys-tabs,
+.alz-manual .tut-in:has(#r-statusline:checked) #sys-tabs,
+.alz-manual .tut-in:has(#r-opencode:checked) #sys-tabs,
+.alz-manual .tut-in:has(#r-mcp:checked) #sys-tabs,
+.alz-manual .tut-in:has(#r-claudemd:checked) #sys-tabs,
+.alz-manual .tut-in:has(#r-faq:checked) #sys-tabs {
+  display: none;
+}
+
+/* 操作系统面板显隐 */
+.alz-manual .tut-in:has(#r-win:checked) .tut-prod-cc #win,
+.alz-manual .tut-in:has(#r-win:checked) .tut-prod-codex #win-codex,
+.alz-manual .tut-in:has(#r-win:checked) .tut-prod-gemini #win-gemini,
+.alz-manual .tut-in:has(#r-mac:checked) .tut-prod-cc #mac,
+.alz-manual .tut-in:has(#r-mac:checked) .tut-prod-codex #mac-codex,
+.alz-manual .tut-in:has(#r-mac:checked) .tut-prod-gemini #mac-gemini,
+.alz-manual .tut-in:has(#r-linux:checked) .tut-prod-cc #linux,
+.alz-manual .tut-in:has(#r-linux:checked) .tut-prod-codex #linux-codex,
+.alz-manual .tut-in:has(#r-linux:checked) .tut-prod-gemini #linux-gemini,
+.alz-manual .tut-in:has(#r-win:checked) .tut-prod-ecc #fbcfe8-win,
+.alz-manual .tut-in:has(#r-mac:checked) .tut-prod-ecc #fbcfe8-mac,
+.alz-manual .tut-in:has(#r-linux:checked) .tut-prod-ecc #fbcfe8-linux,
+.alz-manual .tut-in:has(#r-win:checked) .tut-prod-openclaw #openclaw-win,
+.alz-manual .tut-in:has(#r-mac:checked) .tut-prod-openclaw #openclaw-mac,
+.alz-manual .tut-in:has(#r-linux:checked) .tut-prod-openclaw #openclaw-linux {
+  display: block;
+}
+
+/* ===========================================================================
+   内容卡片
+   =========================================================================== */
+.alz-manual .tut-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  transition: border-color 0.2s ease;
+}
+
+.dark .alz-manual .tut-card {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.alz-manual .tut-card:hover {
+  border-color: var(--border2);
+}
+
+.alz-manual .tut-card-info {
+  border-left-color: #ec4899;
+}
+.alz-manual .tut-card-tip {
+  border-left-color: #22c55e;
+}
+.alz-manual .tut-card-warn {
+  border-left-color: #f59e0b;
+}
+.alz-manual .tut-card-err {
+  border-left-color: #ef4444;
+}
+.alz-manual .tut-card-purple {
+  border-left-color: #a855f7;
+}
+
+/* ---- 步骤标题 ---- */
+.alz-manual .tut-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.alz-manual .tut-step-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  flex-shrink: 0;
+  background: #db2777;
+}
+
+.alz-manual .tut-step-num.b {
+  background: #db2777;
+}
+.alz-manual .tut-step-num.p {
+  background: #ec4899;
+}
+.alz-manual .tut-step-num.g {
+  background: #22c55e;
+}
+.alz-manual .tut-step-num.y {
+  background: #f59e0b;
+}
+.alz-manual .tut-step-num.r {
+  background: #ef4444;
+}
+
+.alz-manual .tut-step-t {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--t);
+}
+
+/* ---- 段落 ---- */
+.alz-manual .tut-p {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--t2);
+  margin: 0 0 14px;
+}
+
+.alz-manual .tut-p:last-child {
+  margin-bottom: 0;
+}
+
+.alz-manual .tut-p b {
+  color: var(--t);
+  font-weight: 600;
+}
+
+.alz-manual .tut-p code {
+  background: rgba(236, 72, 153, 0.1);
+  color: var(--b);
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-family: 'SF Mono', Monaco, Consolas, 'Courier New', monospace;
+  font-size: 13px;
+}
+
+.dark .alz-manual .tut-p code {
+  color: #f9a8d4;
+}
+
+/* ===========================================================================
+   代码块（两种主题下均为深色终端风格）
+   =========================================================================== */
+.alz-manual .tut-code {
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin: 14px 0;
+  overflow-x: auto;
+  position: relative;
+  font-family: 'SF Mono', Monaco, Consolas, 'Courier New', monospace;
+  font-size: 13px;
+}
+
+.alz-manual .tut-code-line {
+  display: block;
+  padding: 2px 0;
+  color: #e2e8f0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.alz-manual .tut-code-cmt {
+  color: #94a3b8;
+}
+
+.alz-manual .tut-code-copy {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 12px;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 7px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.alz-manual .tut-code:hover .tut-code-copy {
+  opacity: 1;
+}
+
+.alz-manual .tut-code-copy:hover {
+  background: rgba(236, 72, 153, 0.7);
+  color: #fff;
+}
+
+/* ===========================================================================
+   提示条 / 链接按钮 / 折叠块 / URL 框
+   =========================================================================== */
+.alz-manual .tut-hint {
+  margin: 10px 0;
+  padding: 10px 14px;
+  border-radius: 9px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(236, 72, 153, 0.1);
+  border: 1px solid rgba(236, 72, 153, 0.25);
+  color: var(--b);
+}
+
+.dark .alz-manual .tut-hint {
+  color: #f9a8d4;
+}
+
+.alz-manual .tut-hint span {
+  opacity: 0.9;
+}
+
+.alz-manual .tut-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  background: transparent;
+  color: var(--t);
+  text-decoration: none;
+  border: 1px solid var(--border2);
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin: 4px 6px 4px 0;
+}
+
+.alz-manual .tut-link:hover {
+  border-color: #ec4899;
+  color: var(--b);
+}
+
+.alz-manual .tut-link-b {
+  background: #db2777;
+  border-color: #db2777;
+  color: #fff;
+}
+
+.alz-manual .tut-link-b:hover {
+  background: #be185d;
+  border-color: #be185d;
+  color: #fff;
+}
+
+.alz-manual .tut-link-g {
+  background: rgba(236, 72, 153, 0.12);
+  border-color: rgba(236, 72, 153, 0.3);
+  color: var(--b);
+}
+
+.dark .alz-manual .tut-link-g {
+  color: #f9a8d4;
+}
+
+.alz-manual .tut-link-g:hover {
+  background: rgba(236, 72, 153, 0.2);
+  border-color: #ec4899;
+}
+
+.alz-manual .tut-details {
+  margin: 14px 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.alz-manual .tut-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--b);
+  font-size: 14px;
+  padding: 13px 16px;
+  background: var(--glass);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease;
+}
+
+.alz-manual .tut-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.alz-manual .tut-details summary::before {
+  content: '▶';
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+
+.alz-manual .tut-details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.alz-manual .tut-details summary:hover {
+  background: var(--glass2);
+}
+
+.alz-manual .tut-details-in {
+  padding: 16px 18px;
+  border-top: 1px solid var(--border);
+}
+
+.alz-manual .tut-url {
+  background: rgba(236, 72, 153, 0.08);
+  border: 1px solid rgba(236, 72, 153, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: left;
+  margin: 12px 0;
+}
+
+.alz-manual .tut-url-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.alz-manual .tut-url-main a,
+.alz-manual .tut-url-sub a {
+  color: var(--b);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.alz-manual .tut-url-main a:hover,
+.alz-manual .tut-url-sub a:hover {
+  text-decoration: underline;
+}
+
+.alz-manual .tut-url-sub {
+  font-size: 13px;
+  color: var(--t2);
+  margin-top: 10px;
+}
+
+.alz-manual .tut-copy {
+  padding: 6px 14px;
+  font-size: 12px;
+  background: #db2777;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.alz-manual .tut-copy:hover {
+  background: #be185d;
+}
+
+.alz-manual .tut-footer {
+  text-align: center;
+  padding: 24px 0 0;
+  color: var(--t3);
+  font-size: 13px;
+}
+
+.alz-manual .tut-footer a {
+  color: var(--b);
+  text-decoration: none;
+}
+
+.alz-manual .tut-footer a:hover {
+  text-decoration: underline;
+}
+
+.alz-manual img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* ===========================================================================
+   子选项卡（MCP / opencode / OpenClaw / 状态栏插件）
+   =========================================================================== */
+.alz-manual .mcp-tab,
+.alz-manual .oc-tab,
+.alz-manual .oclaw-tab,
+.alz-manual .sl-tab {
+  padding: 7px 15px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--t2);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  margin: 0 6px 6px 0;
+}
+
+.dark .alz-manual .mcp-tab,
+.dark .alz-manual .oc-tab,
+.dark .alz-manual .oclaw-tab,
+.dark .alz-manual .sl-tab {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.alz-manual .mcp-tab:hover,
+.alz-manual .oc-tab:hover,
+.alz-manual .oclaw-tab:hover,
+.alz-manual .sl-tab:hover {
+  background: rgba(236, 72, 153, 0.12);
+  color: var(--b);
+}
+
+/* MCP 子项 */
+.alz-manual .mcp-item {
+  display: none;
+  margin-top: 14px;
+}
+.alz-manual .tut-prod-mcp:has(#mcp-all:checked) .mcp-item,
+.alz-manual .tut-prod-mcp:has(#mcp-dev:checked) .mcp-item.mcp-dev,
+.alz-manual .tut-prod-mcp:has(#mcp-prod:checked) .mcp-item.mcp-prod,
+.alz-manual .tut-prod-mcp:has(#mcp-db:checked) .mcp-item.mcp-db,
+.alz-manual .tut-prod-mcp:has(#mcp-auto:checked) .mcp-item.mcp-auto {
+  display: block;
+}
+.alz-manual .tut-prod-mcp:has(#mcp-all:checked) .mcp-tab[for='mcp-all'],
+.alz-manual .tut-prod-mcp:has(#mcp-dev:checked) .mcp-tab[for='mcp-dev'],
+.alz-manual .tut-prod-mcp:has(#mcp-prod:checked) .mcp-tab[for='mcp-prod'],
+.alz-manual .tut-prod-mcp:has(#mcp-db:checked) .mcp-tab[for='mcp-db'],
+.alz-manual .tut-prod-mcp:has(#mcp-auto:checked) .mcp-tab[for='mcp-auto'] {
+  background: #db2777;
+  color: #fff;
+  border-color: #db2777;
+}
+
+/* opencode 子项 */
+.alz-manual .oc-content {
+  display: none;
+}
+.alz-manual .tut-prod-opencode:has(#oc-claude:checked) .oc-claude,
+.alz-manual .tut-prod-opencode:has(#oc-gemini:checked) .oc-gemini,
+.alz-manual .tut-prod-opencode:has(#oc-codex:checked) .oc-codex {
+  display: block;
+}
+.alz-manual .tut-prod-opencode:has(#oc-claude:checked) .oc-tab[for='oc-claude'],
+.alz-manual .tut-prod-opencode:has(#oc-gemini:checked) .oc-tab[for='oc-gemini'],
+.alz-manual .tut-prod-opencode:has(#oc-codex:checked) .oc-tab[for='oc-codex'] {
+  background: #ec4899;
+  color: #fff;
+  border-color: #ec4899;
+}
+
+/* OpenClaw 子项 */
+.alz-manual .oclaw-content {
+  display: none;
+}
+.alz-manual .tut-prod-openclaw:has(#oclaw-claude:checked) .oclaw-claude,
+.alz-manual .tut-prod-openclaw:has(#oclaw-codex:checked) .oclaw-codex {
+  display: block;
+}
+.alz-manual .tut-prod-openclaw:has(#oclaw-claude:checked) .oclaw-tab[for='oclaw-claude'],
+.alz-manual .tut-prod-openclaw:has(#oclaw-codex:checked) .oclaw-tab[for='oclaw-codex'] {
+  background: #ec4899;
+  color: #fff;
+  border-color: #ec4899;
+}
+
+/* 状态栏插件子项 */
+.alz-manual .sl-content {
+  display: none;
+}
+.alz-manual .tut-prod-statusline:has(#sl-ccometix:checked) .sl-ccometix,
+.alz-manual .tut-prod-statusline:has(#sl-ccstatus:checked) .sl-ccstatus,
+.alz-manual .tut-prod-statusline:has(#sl-powerline:checked) .sl-powerline,
+.alz-manual .tut-prod-statusline:has(#sl-ccsl:checked) .sl-ccsl,
+.alz-manual .tut-prod-statusline:has(#sl-codesl:checked) .sl-codesl {
+  display: block;
+}
+.alz-manual .tut-prod-statusline:has(#sl-ccometix:checked) .sl-tab[for='sl-ccometix'],
+.alz-manual .tut-prod-statusline:has(#sl-ccstatus:checked) .sl-tab[for='sl-ccstatus'],
+.alz-manual .tut-prod-statusline:has(#sl-powerline:checked) .sl-tab[for='sl-powerline'],
+.alz-manual .tut-prod-statusline:has(#sl-ccsl:checked) .sl-tab[for='sl-ccsl'],
+.alz-manual .tut-prod-statusline:has(#sl-codesl:checked) .sl-tab[for='sl-codesl'] {
+  background: #db2777;
+  color: #fff;
+  border-color: #db2777;
+}
+
+.alz-manual .sl-badge-g,
+.alz-manual .sl-badge-o {
+  padding: 2px 8px;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 4px;
+}
+.alz-manual .sl-badge-g {
+  background: #22c55e;
+}
+.alz-manual .sl-badge-o {
+  background: #f59e0b;
+}
+
+/* ===========================================================================
+   表格（everything-claude-code）
+   =========================================================================== */
+.alz-manual .ecc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+.alz-manual .ecc-table td,
+.alz-manual .ecc-table th {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+  color: var(--t2);
+}
+
+.alz-manual .ecc-table td:first-child {
+  color: var(--t);
+  font-weight: 500;
+}
+
+/* ===========================================================================
+   小屏适配
+   =========================================================================== */
+@media (max-width: 640px) {
+  .alz-manual .tut-tabs-row {
+    flex-direction: column;
+  }
+  .alz-manual .tut-tab {
+    width: 100%;
+  }
+  .alz-manual .tut-card {
+    padding: 18px;
+  }
+}
