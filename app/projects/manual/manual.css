@@ -134,6 +134,7 @@
 .alz-manual #r-claudemd:checked ~ .tut-prod-tabs .tut-tab[for='r-claudemd'],
 .alz-manual #r-openclaw:checked ~ .tut-prod-tabs .tut-tab[for='r-openclaw'],
 .alz-manual #r-faq:checked ~ .tut-prod-tabs .tut-tab[for='r-faq'],
+.alz-manual #r-hermes:checked ~ .tut-prod-tabs .tut-tab[for='r-hermes'],
 .alz-manual #r-win:checked ~ .tut-sys-tabs .tut-tab[for='r-win'],
 .alz-manual #r-mac:checked ~ .tut-sys-tabs .tut-tab[for='r-mac'],
 .alz-manual #r-linux:checked ~ .tut-sys-tabs .tut-tab[for='r-linux'] {
@@ -164,6 +165,7 @@
 .alz-manual .tut-in:has(#r-mcp:checked) .tut-prod-mcp,
 .alz-manual .tut-in:has(#r-claudemd:checked) .tut-prod-claudemd,
 .alz-manual .tut-in:has(#r-openclaw:checked) .tut-prod-openclaw,
+.alz-manual .tut-in:has(#r-hermes:checked) .tut-prod-hermes,
 .alz-manual .tut-in:has(#r-faq:checked) .tut-prod-faq {
   display: block;
 }
@@ -196,6 +198,9 @@
 .alz-manual .tut-in:has(#r-linux:checked) .tut-prod-ecc #fbcfe8-linux,
 .alz-manual .tut-in:has(#r-win:checked) .tut-prod-openclaw #openclaw-win,
 .alz-manual .tut-in:has(#r-mac:checked) .tut-prod-openclaw #openclaw-mac,
+.alz-manual .tut-in:has(#r-win:checked) .tut-prod-hermes #win-hermes,
+.alz-manual .tut-in:has(#r-mac:checked) .tut-prod-hermes #mac-hermes,
+.alz-manual .tut-in:has(#r-linux:checked) .tut-prod-hermes #linux-hermes,
 .alz-manual .tut-in:has(#r-linux:checked) .tut-prod-openclaw #openclaw-linux {
   display: block;
 }
