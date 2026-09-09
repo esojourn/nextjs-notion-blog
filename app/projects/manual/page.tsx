@@ -12,7 +12,7 @@ export default function ManualPage() {
           操作说明
         </h1>
         <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-          Claude Code / Codex / Gemini CLI / Droid CLI 使用教程 · 按产品与操作系统选择对应步骤
+          Hermes Agent / Claude Code / Codex / CC-Switch 使用教程 · 按产品与操作系统选择对应步骤
         </p>
       </div>
       {/* 内容来自原 HTML 教程，已剥离其自带样式，统一使用本博客的视觉风格；
