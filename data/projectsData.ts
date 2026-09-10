@@ -11,7 +11,7 @@ const projectsData: Project[] = [
     description: `Claude Code 使用教程。涵盖 Windows / macOS 的安装、配置与常见问题,
     按平台选择对应步骤,分步图文指引。`,
     imgSrc: '/static/images/cover5.png',
-    href: '/projects/manual',
+    href: '/manual',
   },
   {
     title: 'GPT中转站',

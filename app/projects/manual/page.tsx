@@ -1,23 +1,10 @@
-import './manual.css'
-import manualContent from '@/data/manualContent.json'
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: '操作说明' })
+// 教程页已迁移至 /manual，这里保留旧地址是因为站外第三方链接仍指向 /projects/manual。
+// 内容直接复用新路径的页面组件，canonical 指向 /manual，避免两个地址被当成重复内容。
+export { default } from '../../manual/page'
 
-export default function ManualPage() {
-  return (
-    <div className="pt-6">
-      <div className="space-y-2 pb-8 md:space-y-5">
-        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-4xl md:leading-14">
-          操作说明
-        </h1>
-        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-          Hermes Agent / Claude Code / Codex / CC-Switch 使用教程 · 按产品与操作系统选择对应步骤
-        </p>
-      </div>
-      {/* 内容来自原 HTML 教程，已剥离其自带样式，统一使用本博客的视觉风格；
-          产品 / 操作系统的选项切换基于纯 CSS（radio + :checked），无需客户端脚本 */}
-      <div className="alz-manual" dangerouslySetInnerHTML={{ __html: manualContent.html }} />
-    </div>
-  )
-}
+export const metadata = genPageMetadata({
+  title: '操作说明',
+  alternates: { canonical: '/manual' },
+})
