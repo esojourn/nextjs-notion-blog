@@ -1,6 +1,6 @@
 /* ===========================================================================
    操作说明（Claude Code 使用教程）页面样式
-   - 原始页面的全部视觉样式已弃用，这里按本博客的设计（pink 主色 + 明暗模式）重写
+   - 原始页面的全部视觉样式已弃用，这里按本博客的设计（赤陶橙主色 + 明暗模式）重写
    - 仅保留原页面基于 radio + :has()/:checked 的「选项切换」机制（功能性，非外观）
    - 全部选择器作用域限定在 .alz-manual 之下，避免污染站点其他页面
    =========================================================================== */
@@ -8,14 +8,14 @@
 /* 原页面内联样式里引用了一批 CSS 变量（--b/--border/--t…），
    这里用博客主题色重新定义，使残留的内联样式也能在新主题下正确呈现 */
 .alz-manual {
-  --b: #db2777; /* pink-600 主色 */
-  --p: #ec4899; /* pink-500 */
-  --g: #f472b6; /* pink-400 */
-  --o: #f59e0b; /* amber-500 */
-  --r: #ef4444; /* red-500 */
-  --t: #111827; /* 正文 */
-  --t2: #4b5563; /* 次要文字 */
-  --t3: #9ca3af; /* 弱化文字 */
+  --b: #b54612; /* primary-600 主色（文字/实心按钮） */
+  --p: #cd571b; /* primary-500 品牌色 */
+  --g: #e87c3d; /* primary-400 */
+  --o: #ca8a04; /* 警告：金 */
+  --r: #dc2626; /* 错误：红 */
+  --t: #201b18; /* 正文 */
+  --t2: #655a53; /* 次要文字 */
+  --t3: #aca19a; /* 弱化文字 */
   --glass: rgba(0, 0, 0, 0.02);
   --glass2: rgba(0, 0, 0, 0.05);
   --border: rgba(0, 0, 0, 0.1);
@@ -28,9 +28,9 @@
 }
 
 .dark .alz-manual {
-  --t: #f3f4f6;
-  --t2: #9ca3af;
-  --t3: #6b7280;
+  --t: #f7f5f2;
+  --t2: #aca19a;
+  --t3: #7a6e66;
   --glass: rgba(255, 255, 255, 0.04);
   --glass2: rgba(255, 255, 255, 0.07);
   --border: rgba(255, 255, 255, 0.12);
@@ -115,11 +115,11 @@
 }
 
 .alz-manual .tut-tab:hover {
-  background: rgba(236, 72, 153, 0.12);
+  background: rgba(205, 87, 27, 0.12);
   color: var(--b);
 }
 
-/* 选中态：产品 / 系统标签（保留原 :has/:checked 机制，改为 pink 主色） */
+/* 选中态：产品 / 系统标签（保留原 :has/:checked 机制，改为主色） */
 .alz-manual #r-cc:checked ~ .tut-prod-tabs .tut-tab[for='r-cc'],
 .alz-manual #r-codex:checked ~ .tut-prod-tabs .tut-tab[for='r-codex'],
 .alz-manual #r-gemini:checked ~ .tut-prod-tabs .tut-tab[for='r-gemini'],
@@ -138,10 +138,10 @@
 .alz-manual #r-win:checked ~ .tut-sys-tabs .tut-tab[for='r-win'],
 .alz-manual #r-mac:checked ~ .tut-sys-tabs .tut-tab[for='r-mac'],
 .alz-manual #r-linux:checked ~ .tut-sys-tabs .tut-tab[for='r-linux'] {
-  background: linear-gradient(135deg, #db2777, #ec4899);
+  background: linear-gradient(135deg, #b54612, #cd571b);
   color: #fff;
   border-color: transparent;
-  box-shadow: 0 4px 14px rgba(219, 39, 119, 0.3);
+  box-shadow: 0 4px 14px rgba(181, 70, 18, 0.3);
 }
 
 /* ===========================================================================
@@ -227,19 +227,19 @@
 }
 
 .alz-manual .tut-card-info {
-  border-left-color: #ec4899;
+  border-left-color: #cd571b;
 }
 .alz-manual .tut-card-tip {
-  border-left-color: #22c55e;
+  border-left-color: #2a9192;
 }
 .alz-manual .tut-card-warn {
-  border-left-color: #f59e0b;
+  border-left-color: #ca8a04;
 }
 .alz-manual .tut-card-err {
-  border-left-color: #ef4444;
+  border-left-color: #dc2626;
 }
 .alz-manual .tut-card-purple {
-  border-left-color: #a855f7;
+  border-left-color: #95370f;
 }
 
 /* ---- 步骤标题 ---- */
@@ -261,23 +261,23 @@
   font-size: 15px;
   color: #fff;
   flex-shrink: 0;
-  background: #db2777;
+  background: #b54612;
 }
 
 .alz-manual .tut-step-num.b {
-  background: #db2777;
+  background: #b54612;
 }
 .alz-manual .tut-step-num.p {
-  background: #ec4899;
+  background: #cd571b;
 }
 .alz-manual .tut-step-num.g {
-  background: #22c55e;
+  background: #1d777c;
 }
 .alz-manual .tut-step-num.y {
-  background: #f59e0b;
+  background: #a16207;
 }
 .alz-manual .tut-step-num.r {
-  background: #ef4444;
+  background: #dc2626;
 }
 
 .alz-manual .tut-step-t {
@@ -304,7 +304,7 @@
 }
 
 .alz-manual .tut-p code {
-  background: rgba(236, 72, 153, 0.1);
+  background: rgba(205, 87, 27, 0.1);
   color: var(--b);
   padding: 2px 7px;
   border-radius: 6px;
@@ -313,14 +313,14 @@
 }
 
 .dark .alz-manual .tut-p code {
-  color: #f9a8d4;
+  color: #f1a874;
 }
 
 /* ===========================================================================
    代码块（两种主题下均为深色终端风格）
    =========================================================================== */
 .alz-manual .tut-code {
-  background: #0f172a;
+  background: #1b1613;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   padding: 16px 18px;
@@ -334,13 +334,13 @@
 .alz-manual .tut-code-line {
   display: block;
   padding: 2px 0;
-  color: #e2e8f0;
+  color: #ede7e3;
   white-space: pre-wrap;
   word-break: break-all;
 }
 
 .alz-manual .tut-code-cmt {
-  color: #94a3b8;
+  color: #aca19a;
 }
 
 .alz-manual .tut-code-copy {
@@ -350,7 +350,7 @@
   padding: 5px 12px;
   font-size: 11px;
   background: rgba(255, 255, 255, 0.1);
-  color: #e2e8f0;
+  color: #ede7e3;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 7px;
   cursor: pointer;
@@ -364,7 +364,7 @@
 }
 
 .alz-manual .tut-code-copy:hover {
-  background: rgba(236, 72, 153, 0.7);
+  background: rgba(205, 87, 27, 0.7);
   color: #fff;
 }
 
@@ -379,13 +379,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(236, 72, 153, 0.1);
-  border: 1px solid rgba(236, 72, 153, 0.25);
+  background: rgba(205, 87, 27, 0.1);
+  border: 1px solid rgba(205, 87, 27, 0.25);
   color: var(--b);
 }
 
 .dark .alz-manual .tut-hint {
-  color: #f9a8d4;
+  color: #f1a874;
 }
 
 .alz-manual .tut-hint span {
@@ -409,35 +409,35 @@
 }
 
 .alz-manual .tut-link:hover {
-  border-color: #ec4899;
+  border-color: #cd571b;
   color: var(--b);
 }
 
 .alz-manual .tut-link-b {
-  background: #db2777;
-  border-color: #db2777;
+  background: #b54612;
+  border-color: #b54612;
   color: #fff;
 }
 
 .alz-manual .tut-link-b:hover {
-  background: #be185d;
-  border-color: #be185d;
+  background: #95370f;
+  border-color: #95370f;
   color: #fff;
 }
 
 .alz-manual .tut-link-g {
-  background: rgba(236, 72, 153, 0.12);
-  border-color: rgba(236, 72, 153, 0.3);
+  background: rgba(205, 87, 27, 0.12);
+  border-color: rgba(205, 87, 27, 0.3);
   color: var(--b);
 }
 
 .dark .alz-manual .tut-link-g {
-  color: #f9a8d4;
+  color: #f1a874;
 }
 
 .alz-manual .tut-link-g:hover {
-  background: rgba(236, 72, 153, 0.2);
-  border-color: #ec4899;
+  background: rgba(205, 87, 27, 0.2);
+  border-color: #cd571b;
 }
 
 .alz-manual .tut-details {
@@ -485,8 +485,8 @@
 }
 
 .alz-manual .tut-url {
-  background: rgba(236, 72, 153, 0.08);
-  border: 1px solid rgba(236, 72, 153, 0.2);
+  background: rgba(205, 87, 27, 0.08);
+  border: 1px solid rgba(205, 87, 27, 0.2);
   border-radius: 12px;
   padding: 16px;
   text-align: left;
@@ -522,7 +522,7 @@
 .alz-manual .tut-copy {
   padding: 6px 14px;
   font-size: 12px;
-  background: #db2777;
+  background: #b54612;
   color: #fff;
   border: none;
   border-radius: 7px;
@@ -532,7 +532,7 @@
 }
 
 .alz-manual .tut-copy:hover {
-  background: #be185d;
+  background: #95370f;
 }
 
 .alz-manual .tut-footer {
@@ -590,7 +590,7 @@
 .alz-manual .oc-tab:hover,
 .alz-manual .oclaw-tab:hover,
 .alz-manual .sl-tab:hover {
-  background: rgba(236, 72, 153, 0.12);
+  background: rgba(205, 87, 27, 0.12);
   color: var(--b);
 }
 
@@ -611,9 +611,9 @@
 .alz-manual .tut-prod-mcp:has(#mcp-prod:checked) .mcp-tab[for='mcp-prod'],
 .alz-manual .tut-prod-mcp:has(#mcp-db:checked) .mcp-tab[for='mcp-db'],
 .alz-manual .tut-prod-mcp:has(#mcp-auto:checked) .mcp-tab[for='mcp-auto'] {
-  background: #db2777;
+  background: #b54612;
   color: #fff;
-  border-color: #db2777;
+  border-color: #b54612;
 }
 
 /* opencode 子项 */
@@ -628,9 +628,9 @@
 .alz-manual .tut-prod-opencode:has(#oc-claude:checked) .oc-tab[for='oc-claude'],
 .alz-manual .tut-prod-opencode:has(#oc-gemini:checked) .oc-tab[for='oc-gemini'],
 .alz-manual .tut-prod-opencode:has(#oc-codex:checked) .oc-tab[for='oc-codex'] {
-  background: #ec4899;
+  background: #cd571b;
   color: #fff;
-  border-color: #ec4899;
+  border-color: #cd571b;
 }
 
 /* OpenClaw 子项 */
@@ -643,9 +643,9 @@
 }
 .alz-manual .tut-prod-openclaw:has(#oclaw-claude:checked) .oclaw-tab[for='oclaw-claude'],
 .alz-manual .tut-prod-openclaw:has(#oclaw-codex:checked) .oclaw-tab[for='oclaw-codex'] {
-  background: #ec4899;
+  background: #cd571b;
   color: #fff;
-  border-color: #ec4899;
+  border-color: #cd571b;
 }
 
 /* 状态栏插件子项 */
@@ -664,9 +664,9 @@
 .alz-manual .tut-prod-statusline:has(#sl-powerline:checked) .sl-tab[for='sl-powerline'],
 .alz-manual .tut-prod-statusline:has(#sl-ccsl:checked) .sl-tab[for='sl-ccsl'],
 .alz-manual .tut-prod-statusline:has(#sl-codesl:checked) .sl-tab[for='sl-codesl'] {
-  background: #db2777;
+  background: #b54612;
   color: #fff;
-  border-color: #db2777;
+  border-color: #b54612;
 }
 
 .alz-manual .sl-badge-g,
@@ -677,10 +677,10 @@
   border-radius: 4px;
 }
 .alz-manual .sl-badge-g {
-  background: #22c55e;
+  background: #1d777c;
 }
 .alz-manual .sl-badge-o {
-  background: #f59e0b;
+  background: #a16207;
 }
 
 /* ===========================================================================
